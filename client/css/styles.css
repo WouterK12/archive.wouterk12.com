@@ -223,6 +223,10 @@ nav .logout {
   text-transform: uppercase;
 }
 
+.spacer {
+  height: 100px;
+}
+
 footer {
   position: absolute;
   bottom: 0;

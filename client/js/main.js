@@ -54,4 +54,16 @@ window.addEventListener("load", () => {
         errorMessage.style.display = "block";
       });
   });
+
+  usernameField.addEventListener("keypress", () => {
+    HideErrorMessage();
+  });
+  passwordField.addEventListener("keypress", () => {
+    HideErrorMessage();
+  });
+
+  function HideErrorMessage() {
+    errorMessage.style.display = "";
+    errorMessage.innerText = "";
+  }
 });
