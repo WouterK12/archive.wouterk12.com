@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="shortcut icon" href="img/lock_white_24dp.svg" type="image/svg" />
-    <script src="js/main.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
@@ -17,21 +16,26 @@
     <h1 class="title">Minecraft Server Archive</h1>
     <main>
       <div class="server login">
-        <h2 class="name">Login</h2>
-        <form ref="loginForm" id="loginForm">
-          <p class="error" id="errorMessage"></p>
-          <label for="username">Username</label>
-          <input type="text" id="username" class="text" required />
-          <label for="password">Password</label>
-          <input type="password" id="password" class="text" required />
-          <div class="policy-checkbox">
-            <input type="checkbox" name="policy" id="policy" required />
-            <label for="policy">
-              I agree to the <a href="/policy.html" target="_blank">policy</a>
-            </label>
-          </div>
-          <input type="submit" value="Log in" class="submit" />
-        </form>
+        <h2 class="name">Policy</h2>
+        <div class="policy">
+          <p>By using this website, you agree to this policy.</p>
+          <hr />
+          <p>
+            You are not allowed to distribute, sell or share any of the
+            available files on this website.
+          </p>
+          <p>
+            You are not allowed to share the credentials of the
+            <i>WhitelistedPlayer</i> account.
+          </p>
+          <p>All available files are not guaranteed to work as intended.</p>
+          <hr />
+          <p>
+            This policy is effective as of May 25, 2021 Changes may be made at
+            any time without your notice.
+          </p>
+          <p>Last updated: May 25, 2021</p>
+        </div>
       </div>
     </main>
     <footer>
