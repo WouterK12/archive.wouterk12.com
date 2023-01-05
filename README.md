@@ -2,6 +2,10 @@
 
 An archive of old worlds from my Minecraft server.
 
+![Archive](https://github.com/WouterK12/archive.wouterk12.com/blob/master/screenshots/archive.png?raw=true)
+
+![Login](https://github.com/WouterK12/archive.wouterk12.com/blob/master/screenshots/login.png?raw=true)
+
 ## Usage
 
 ```
