@@ -3,3 +3,4 @@ WouterK12s_Server_1.15.2.zip
 WouterK12s_Server_1.16.5.zip
 WouterK12s_Server_1.17.1.zip
 WouterK12s_Server_1.18.2.zip
+WouterK12s_Server_1.20.6.zip
