@@ -24,11 +24,11 @@ services:
     labels:
       - "traefik.enable=true"
 
-      - "traefik.http.routers.myapp.rule=Host(`archive.wouterk12.com`)"
-      - "traefik.http.routers.myapp.entrypoints=websecure"
-      - "traefik.http.routers.myapp.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.archive.rule=Host(`archive.wouterk12.com`)"
+      - "traefik.http.routers.archive.entrypoints=websecure"
+      - "traefik.http.routers.archive.tls.certresolver=letsencrypt"
 
-      - "traefik.http.services.myapp.loadbalancer.server.port=5200"
+      - "traefik.http.services.archive.loadbalancer.server.port=5200"
 
   mongo:
     image: mongo:6
