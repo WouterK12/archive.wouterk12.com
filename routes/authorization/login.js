@@ -60,7 +60,7 @@ router.post("/", async (req, res) => {
             {
               maxAge: 15 * 60 * 1000,
               httpOnly: true,
-            }
+            },
           );
           res.send();
         })
@@ -82,10 +82,7 @@ router.get("/addwhitelistedplayer", async (req, res) => {
   const user = await User.findOne({ username: "WhitelistedPlayer" });
   if (!user) {
     try {
-      const hashedPassword = await bcrypt.hash(
-        process.env.WHITELISTED_PASSWORD,
-        10
-      );
+      const hashedPassword = await bcrypt.hash(process.env.WHITELISTED_PASSWORD, 10);
 
       const guestUser = new User({
         _id: mongoose.Types.ObjectId(),
@@ -102,6 +99,7 @@ router.get("/addwhitelistedplayer", async (req, res) => {
           throw err;
         });
     } catch (err) {
+      console.error(err);
       res.sendStatus(500);
     }
   } else {
