@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      MONGO_URI: mongodb://mongo:27017/minecraft_server_archive
+      PORT: 5200
+    volumes:
+      - ./.env:/app/.env:ro
+    ports:
+      - "5200:5200"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

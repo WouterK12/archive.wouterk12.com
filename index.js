@@ -10,9 +10,10 @@ const mongoose = require("mongoose");
 // const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 5200;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost/minecraft_server_archive";
 
 // connect to the database
-mongoose.connect("mongodb://localhost/minecraft_server_archive", {
+mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -50,10 +51,7 @@ app.use("/download", authenticateToken, require("./routes/download"));
 // enable CORS (https://enable-cors.org/server.html)
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
@@ -69,16 +67,12 @@ function authenticateToken(req, res, next) {
 
   tokens = JSON.parse(tokens);
 
-  jwt.verify(
-    tokens.accessToken,
-    process.env.ACCESS_TOKEN_SECRET,
-    (err, user) => {
-      if (err) return res.status(403).redirect("/");
-      req.user = user;
-      req.tokens = tokens;
-      next();
-    }
-  );
+  jwt.verify(tokens.accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return res.status(403).redirect("/");
+    req.user = user;
+    req.tokens = tokens;
+    next();
+  });
 }
 
 // generate a new accesstoken (on login)
