@@ -5,8 +5,10 @@ services:
     environment:
       MONGO_URI: mongodb://mongo:27017/minecraft_server_archive
       PORT: 5200
+      WHITELISTED_PASSWORD: ${WHITELISTED_PASSWORD:?WHITELISTED_PASSWORD must be set}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:?ACCESS_TOKEN_SECRET must be set}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:?REFRESH_TOKEN_SECRET must be set}
     volumes:
-      - ./.env:/app/.env:ro
       - type: bind
         source: /root/srv/archive/downloads
         target: /app/downloads
