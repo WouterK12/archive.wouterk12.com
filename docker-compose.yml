@@ -12,6 +12,18 @@ services:
     depends_on:
       - mongo
 
+    networks:
+      - proxy
+
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.myapp.rule=Host(`archive.wouterk12.com`)"
+      - "traefik.http.routers.myapp.entrypoints=websecure"
+      - "traefik.http.routers.myapp.tls.certresolver=letsencrypt"
+
+      - "traefik.http.services.myapp.loadbalancer.server.port=5200"
+
   mongo:
     image: mongo:6
     restart: unless-stopped
@@ -20,3 +32,7 @@ services:
 
 volumes:
   mongo-data:
+
+networks:
+  proxy:
+    external: true
