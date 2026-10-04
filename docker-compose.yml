@@ -7,6 +7,12 @@ services:
       PORT: 5200
     volumes:
       - ./.env:/app/.env:ro
+      - type: bind
+        source: /srv/archive/downloads
+        target: /app/downloads
+        read_only: true
+        bind:
+          create_host_path: false
     ports:
       - "5200:5200"
     depends_on:
