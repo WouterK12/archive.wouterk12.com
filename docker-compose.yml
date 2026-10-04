@@ -19,6 +19,7 @@ services:
       - mongo
 
     networks:
+      - default
       - proxy
 
     labels:
