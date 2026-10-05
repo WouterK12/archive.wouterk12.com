@@ -26,6 +26,7 @@ services:
 
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
 
       - "traefik.http.routers.archive.rule=Host(`archive.wouterk12.com`)"
       - "traefik.http.routers.archive.entrypoints=websecure"
