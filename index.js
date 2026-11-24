@@ -7,16 +7,12 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
-// const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 5200;
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost/minecraft_server_archive";
 
 // connect to the database
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(MONGO_URI);
 const connection = mongoose.connection;
 connection.once("open", function () {
   console.log("MongoDB database connection established");

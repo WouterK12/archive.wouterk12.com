@@ -11,7 +11,7 @@ const Token = require("../../models/Token");
 
 // POST authenticate user
 router.post("/", async (req, res) => {
-  if (!req.body.username || !req.body.password) {
+  if (!req.body || !req.body.username || !req.body.password) {
     return res.sendStatus(400);
   }
   const username = req.body.username;
@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
       const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
 
       const newToken = new Token({
-        _id: mongoose.Types.ObjectId(),
+        _id: new mongoose.Types.ObjectId(),
         refreshToken: refreshToken,
         updatedAt: new Date(),
       });
@@ -85,7 +85,7 @@ router.get("/addwhitelistedplayer", async (req, res) => {
       const hashedPassword = await bcrypt.hash(process.env.WHITELISTED_PASSWORD, 10);
 
       const guestUser = new User({
-        _id: mongoose.Types.ObjectId(),
+        _id: new mongoose.Types.ObjectId(),
         username: "WhitelistedPlayer",
         password: hashedPassword,
       });

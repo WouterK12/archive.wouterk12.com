@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
       {
         maxAge: 15 * 60 * 1000,
         httpOnly: true,
-      }
+      },
     );
     res.send();
   });
@@ -39,7 +39,7 @@ router.get("/", async (req, res) => {
 
 // clean up old refresh tokens
 // (remains of logged in clients that no longer have the httpOnly cookie (logged out))
-async function CleanUpTokens() {
+async function cleanUpTokens() {
   const tokens = await Token.find();
   if (!tokens) return;
 
@@ -48,14 +48,18 @@ async function CleanUpTokens() {
 
   tokens.forEach((token) => {
     if (token.updatedAt < now) {
-      token.delete();
+      token.deleteOne();
     }
   });
 }
 
-CleanUpTokens();
-setInterval(() => {
-  CleanUpTokens();
-}, 60 * 60 * 1000); // 1 hour
+cleanUpTokens();
+
+setInterval(
+  () => {
+    cleanUpTokens();
+  },
+  60 * 60 * 1000,
+); // 1 hour
 
 module.exports = router;
